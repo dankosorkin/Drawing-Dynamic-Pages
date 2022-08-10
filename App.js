@@ -8,31 +8,12 @@ export class App {
     this.pageIndex = pageIndex;
   }
 
- renderedPagesFunctionSync(totalPages) {
-   totalPages += 1;
-    for (let i = 1; i < totalPages; i++) {
-      var newDiv = this.createDivWithDbInfo(i);
 
-      this.increaseParams();
-
-      var adNode = this.checkIfEvenOrOdd();
-
-      var adNode = this.checkIfLastPage(i, totalPages, adNode);
-
-      this.ad.used(adNode);
-
-      document.body.append(newDiv);
-      document.body.append(adNode);
-
-      this.ad.stats();
-   
-    }
-  }
-  // this method for the optional question
-  async renderedPagesFunctionAsync(totalPages) {
-    totalPages += 1;
-    for (let i = 1; i < totalPages; i++) {
-      await this.sleep(1000);
+  async renderPages(totalPages , async = false) {
+    for (let i = 0; i < totalPages; i++) {
+      if(async){
+        await this.sleep(1000);
+      }
       var newDiv = this.createDivWithDbInfo(i);
   
       this.increaseParams();
@@ -61,17 +42,14 @@ export class App {
 
   createDivWithDbInfo(i) {
     var newDiv = document.createElement("div");
-    console.log("i is : ",i);
     var id = newDiv.appendChild(document.createElement("h1"));
-    // newDiv.id = db.pageData.id.replace("__PG__", i);
-    id.innerHTML = db.pageData.id.replace("__PG__", i);
+    id.innerHTML = db.pageData.id.replace("__PG__", ++i);
 
     var title = newDiv.appendChild(document.createElement("h4"));
     title.innerHTML = db.pageData.title.replace("PG", "wow i am a good title");
 
     var text = newDiv.appendChild(document.createElement("p"));
     text.innerHTML = db.pageData.text.replace("PG", "wow i am a good paragraph");
-    console.log("this is the return div ... " , newDiv);
     return newDiv;
   }
 
