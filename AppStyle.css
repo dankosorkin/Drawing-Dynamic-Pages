@@ -1,0 +1,28 @@
+html, body{
+
+    background-color: rgb(135, 53, 53);
+    text-align: center;
+    margin: 20px;
+    display: block;
+}
+
+div{
+    border: solid black;
+    padding: auto;
+    margin: 5px; 
+}
+
+h1{
+    text-shadow: 2px 2px rgb(148, 117, 117);
+    font-size: 40px;
+}
+
+h4{
+    font-size: 30px;
+}
+
+p{
+    
+    font-size: 20px;
+}
+
