@@ -1,5 +1,5 @@
-import { App } from "./app.js";
+import { App } from "./App.js";
 
 const app = new App();
-const appRef = await app.renderedPagesFunctionAsync(8);
+const appRef = app.renderedPagesFunctionAsync(8);
 console.log(appRef);
